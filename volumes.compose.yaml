@@ -1,0 +1,10 @@
+x-op-connect-data: &volume
+    volumes:
+      - "op-connect-data:/home/opuser/.op/data"
+services:
+    op-connect-api:
+        <<: *volume
+        volumes: !reset
+    op-connect-sync:
+        <<: *volume
+        volumes: !reset

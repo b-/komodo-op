@@ -41,3 +41,6 @@ go.work.sum
 .Trashes
 ehthumbs.db
 Thumbs.db 
+
+1password-credentials.json
+*compose.cache.yaml
