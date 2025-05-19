@@ -78,18 +78,18 @@ services:
     environment:
       TS_HOSTNAME: "op-connect-api"
 
-#  op-connect-sync:
-#    depends_on:
-#      op-connect-sync-ts:
-#        condition: service_started
-#        required: true
-#    ports: !reset
-#    network_mode: service:op-connect-sync-ts
-#    image: 1password/connect-sync:latest
-#  op-connect-sync-ts:
-#    <<: *ts-sidecar
-#    environment:
-#      TS_HOSTNAME: "op-connect-sync"
+  op-connect-sync:
+    depends_on:
+      op-connect-sync-ts:
+        condition: service_started
+        required: true
+    ports: !reset
+    network_mode: service:op-connect-sync-ts
+    image: 1password/connect-sync:latest
+  op-connect-sync-ts:
+    <<: *ts-sidecar
+    environment:
+      TS_HOSTNAME: "op-connect-sync"
 
 volumes:
   ts_state:
