@@ -12,10 +12,10 @@ branch = "komodo-deploy"
 reclone = true
 file_paths = [
     "docker-compose.yaml",
-    "env.compose.yaml",
     "secrets.compose.yaml",
-    "volumes.compose.yaml",
     "ts.compose.yaml",
+    "env.compose.yaml",
+    "volumes.compose.yaml",
 ]
 environment = """
 KOMODO_API_KEY: [[KOMODO_APIKEY_KEY]]

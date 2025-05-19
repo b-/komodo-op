@@ -11,12 +11,15 @@ set -uo pipefail
       export OP_SERVICE_ACCOUNT_TOKEN='[[OP_SERVICE_ACCOUNT_TOKEN]]'
       export OP_VAULT='[[OP_VAULT]]'
       export OP_SESSION='[[OP_SESSION]]'
+      export SYNC_INTERVAL='[[SYNC_INTERVAL]]'
+
 
 
 COMPOSE_FILES=(
     docker-compose.yaml
     secrets.compose.yaml
-    #ts.compose.yaml
+    ts.compose.yaml
+    env.compose.yaml
     volumes.compose.yaml
 )
 DOCKER_COMPOSE=("docker" "compose")
