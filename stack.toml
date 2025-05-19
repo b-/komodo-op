@@ -1,1 +1,57 @@
-## Add resources to get started
+[[stack]]
+name = "1password-komodo-sync"
+tags = [
+  "infrastructure",
+  "1password-connect"
+]
+[stack.config]
+server = "localhost"
+poll_for_updates = true
+auto_update = true
+destroy_before_deploy = true
+git_account = "b-"
+repo = "b-/komodo-op"
+branch = "komodo-deploy"
+reclone = true
+file_paths = [
+  "docker-compose.yaml",
+  "secrets.compose.yaml",
+  "volumes.compose.yaml",
+  "ts.compose.yaml"
+]
+environment = """
+#TS_AUTHKEY_FILE: /run/secrets/ts_authkey_file
+TS_EXTRA_ARGS: --advertise-tags=tag:op-connect --ssh
+#TS_USERSPACE: false
+TS_ENABLE_HEALTH_CHECK: true
+#TS_LOCAL_ADDR_PORT: 127.0.0.1:41234
+TS_STATE: /ts_state
+#TS_SERVE_CONFIG: /config/serve.json
+TS_AUTHKEY: [[TS_OAUTH_OPCONNECT]]?ephemeral=true
+KOMODO_API_KEY: [[KOMODO_APIKEY_KEY]]
+KOMODO_API_SECRET: [[KOMODO_APIKEY_SECRET]]
+KOMODO_HOST: https://komodo.shark-perch.ts.net
+LOG_LEVEL: INFO
+OP_CONNECT_HOST: http://op-connect-api.shark-perch.ts.net:8080
+#OP_SESSION: /run/secrets/1password-credentials.json
+OP_SESSION: [[OP_SESSION]]
+OP_SERVICE_ACCOUNT_TOKEN: [[OP_SERVICE_ACCOUNT_TOKEN]]
+OP_VAULT: [[OP_VAULT]]
+"""
+
+##
+
+[[resource_sync]]
+name = "1password-connect"
+tags = [
+  "infrastructure",
+  "1password-connect",
+  "sync"
+]
+[resource_sync.config]
+repo = "b-/komodo-op"
+branch = "komodo-deploy"
+git_account = "b-"
+resource_path = ["stack.toml"]
+managed = true
+match_tags = ["1password-connect"]
