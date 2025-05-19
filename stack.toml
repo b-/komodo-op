@@ -13,7 +13,7 @@ reclone = true
 file_paths = [
     "docker-compose.yaml",
     "secrets.compose.yaml",
-    "ts.compose.yaml",
+    # "ts.compose.yaml",
     "env.compose.yaml",
     "volumes.compose.yaml",
 ]
