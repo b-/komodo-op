@@ -1,5 +1,5 @@
 [[stack]]
-name = "1password-komodo-sync"
+name = "komodo-1p"
 tags = ["infrastructure", "1password-connect"]
 [stack.config]
 server = "localhost"
@@ -41,7 +41,7 @@ TS_STATE: /ts_state
 ##
 
 [[resource_sync]]
-name = "1password-connect"
+name = "komodo-1p"
 tags = ["infrastructure", "1password-connect", "sync"]
 [resource_sync.config]
 repo = "b-/komodo-op"
